@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Soccer.BLL.DTO.PlayerDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of players</h2>
+
+<p>
+    <a asp-action="Create">Add new player</a>
+</p>
+<table class="table-condensed" style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Position</th>
+        <th>Club</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Team)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+    </tr>
+}
+</table>
